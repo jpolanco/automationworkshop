@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Suite1">
+    <test name = "test1">
+        <parameter name = "url" value ="http://vacations.evercoding.com"/>
+        <parameter name = "browser" value ="ff"/>
+
+        <!--Parameters for Login-->
+        <parameter name="emailLogin" value="gap-automation-test@mailinator.com" />
+        <parameter name="passwordLogin" value="12345678" />
+
+        <!--Tabs-->
+        <parameter name="administrativeUsersTabOption" value="AdminUser" />
+        <parameter name="myAccountTabOption" value="MyAccount" />
+        <parameter name="employeesInformationTabOption" value="EmployeesInformation" />
+
+        <!--Parameters for create AdminUser-->
+        <parameter name="firstNameAdminUser" value="Keylin" />
+        <parameter name="lastNameAdminUser" value="Hidalgo" />
+        <parameter name="emailAdminUser" value="keylin.hidalgo@wearegap.com" />
+        <parameter name="defaultPasswordAdminUser" value="12345678" />
+        <parameter name="passwordConfirmationAdminUser" value="12345678" />
+
+        <!--Parameters for create Employee-->
+        <parameter name="firstNameEmployeeUser" value="Keylin" />
+        <parameter name="lastNameEmployeeUser" value="Hidalgo" />
+        <parameter name="emailEmployeeUser" value="keylin.hidalgo@wearegap.com" />
+        <parameter name="identificationEmployeeUser" value="101230456" />
+        <parameter name="leadNameEmployeeUser" value="Mike" />
+        <parameter name="startWorkingOnYearEmployeeUser" value="2015" />
+        <parameter name="startWorkingOnMonthEmployeeUser" value="June" />
+        <parameter name="startWorkingOnDayEmployeeUser" value="25" />
+
+        <groups>
+            <run>
+                <!--<include name = "login_test"/>-->
+                <!--<include name = "home_test_tab_switching"/>-->
+                <!--<include name = "home_test_create_admin_user"/>-->
+                <include name = "home_test_create_employee"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name = "tests.LoginTest"/>
+            <class name = "tests.HomeTest"/>
+        </classes>
+    </test>
+</suite>

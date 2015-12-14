@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1">
+    <test name="test1">
+
+        <parameter name="url" value="http://vacations.evercoding.com" />
+        <parameter name="browser" value="firefox"/>
+
+        <parameter name="email" value="gap-automation-test@mailinator.com" />
+        <parameter name="password" value="12345678" />
+        <parameter name="user_password_tc_001" value="12345678" />
+
+        <parameter name="employeeFirstName" value="Hellen" />
+        <parameter name="employeeLastName" value="Suarez" />
+        <parameter name="employeeID" value="1234567890" />
+        <parameter name="employeeIDConfirmation" value="1234567890" />
+        <parameter name="employeeEmail" value="hellen@test.com" />
+        <parameter name="leaderName" value="Hellen Suarez" />
+        <parameter name="starWorkingYear" value="2014" />
+        <parameter name="startWorkingMonth" value="09" />
+        <parameter name="startWorkingDay" value="16" />
+
+        <!--Parameters for Login-->
+        <parameter name="emailLogin" value="gap-automation-test@mailinator.com" />
+        <parameter name="passwordLogin" value="12345678" />
+
+        <!--Tabs-->
+        <parameter name="administrativeUsersTabOption" value="AdminUser" />
+        <parameter name="myAccountTabOption" value="MyAccount" />
+        <parameter name="employeesInformationTabOption" value="EmployeesInformation" />
+
+        <!--Parameters for create AdminUser-->
+        <parameter name="firstNameAdminUser" value="Keylin" />
+        <parameter name="lastNameAdminUser" value="Hidalgo" />
+        <parameter name="emailAdminUser" value="keylin.hidalgo@wearegap.com" />
+        <parameter name="defaultPasswordAdminUser" value="12345678" />
+        <parameter name="passwordConfirmationAdminUser" value="12345678" />
+
+        <!--Parameters for create Employee-->
+        <parameter name="firstNameEmployeeUser" value="Keylin" />
+        <parameter name="lastNameEmployeeUser" value="Hidalgo" />
+        <parameter name="emailEmployeeUser" value="keylin.hidalgo@wearegap.com" />
+        <parameter name="identificationEmployeeUser" value="101230456" />
+        <parameter name="leadNameEmployeeUser" value="Mike" />
+        <parameter name="startWorkingOnYearEmployeeUser" value="2015" />
+        <parameter name="startWorkingOnMonthEmployeeUser" value="June" />
+        <parameter name="startWorkingOnDayEmployeeUser" value="25" />
+        
+        <groups>
+            <run>
+                <!--<include name="login_test_001"/>-->
+                <include name="login_test_002"/>
+
+            </run>
+
+        </groups>
+
+        <classes>
+            <class name="tests.LoginSuccessfullyTest" />
+            <class name="tests.ManagingUsersTest" />
+            <class name = "tests.LoginTest"/>
+            <class name = "tests.HomeTest"/>
+        </classes>
+
+
+
+    </test>
+</suite>

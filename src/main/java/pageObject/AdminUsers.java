@@ -113,7 +113,7 @@ public class AdminUsers extends PageObject {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Alert alert=driver.switchTo().alert();
+        Alert alert=webDriver.switchTo().alert();
         alert.accept();
 
     }

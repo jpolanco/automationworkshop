@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by He on 9/27/2015.
+ * Created by polanquillo on 9/7/15.
  */
 public class WebDriverCommands {
 
@@ -158,6 +158,15 @@ public class WebDriverCommands {
         return  elementText;
     }
 
-
+    /**
+     * This method select a item from a WebElement depending on the value
+     * @param webElement web element to get text
+     * @param value value to select
+     */
+    public void selectValue(By webElement, String value){
+        if(waitForElement(webElement)){
+           Select select = new Select(driver.findElement(webElement));
+            select.selectByValue(value);
+        }
+    }
 }
-

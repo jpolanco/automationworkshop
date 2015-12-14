@@ -10,59 +10,62 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by He on 9/27/2015.
+ * Created by Keylin on 24/10/2015.
  */
 public class SeleniumSetup {
 
-    protected WebDriver driver;
-    private String browser;
-
+    protected WebDriver driverInstance;
+    private String browserName;
 
     /**
-     * <p>This method creates the driver instant depends of the browser choice</p>
+     * This method creates and configures the browser
      * @param browserName Browser name
      */
-    public void setUp(String browserName) {
-        this.browser = browserName;
-        if (browserName.equals("ie")) {
-            DesiredCapabilities dc = new DesiredCapabilities().internetExplorer();
-            dc.setCapability("requireWindowFocus", false);
-            driver = new InternetExplorerDriver();
-            driver.manage().window().maximize();
-            //loginPage = PageFactory.initElements(driver, LoginPage.class);
-        } else if (browserName.equals("chrome")) {
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
-            //loginPage = PageFactory.initElements(driver, LoginPage.class);
-        } else if (browserName.equals("firefox")) {
+    public void setUp(String browserName){
+        this.browserName = browserName;
+
+        //Creating the browser depending on the browser choice
+        if(browserName.equals("ie")){
+            DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+            capabilities.setCapability("requireWindowsFocus", false);
+            driverInstance = new InternetExplorerDriver();
+        } else if(browserName.equals("chrome")){
+            driverInstance = new ChromeDriver();
+        } else if(browserName.equals("firefox")){
             FirefoxProfile profile = new FirefoxProfile();
-            driver = new FirefoxDriver(profile);
-            driver.manage().window().maximize();
-            //loginPage = PageFactory.initElements(driver, LoginPage.class);
+            driverInstance = new FirefoxDriver(profile);
         }
-        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
-        driver.manage().deleteAllCookies();
+
+        System.out.println(driverInstance.getClass());
+
+        // Configuring the browser
+        driverInstance.manage().window().maximize();
+        driverInstance.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+        driverInstance.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driverInstance.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
+        driverInstance.manage().deleteAllCookies();
     }
 
     /**
-     * <p>This method returns the browser name in case any test case need it </p>
-     * @return Browser selected
+     * <p>This method returns the browser's name</p>
+      * @return browser's name
      */
-    public String getBrowserName(){
-        return this.browser;
+    public  String getBrowserName (){
+        return this.browserName;
     }
 
     /**
-     * <p>This method close the driver before every test case run </p>
+     * Closing the browser instance before every test case run
      */
     public void tearDown(){
-        driver.quit();
-
+        driverInstance.quit();
     }
 
+    /**
+     * This method returns the browser instance
+     * @return browser instance
+     */
     protected WebDriver getDriverInstance(){
-        return this.driver;
+        return this.driverInstance;
     }
 }

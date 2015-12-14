@@ -10,22 +10,22 @@ import org.testng.annotations.Parameters;
 public class SeleniumInitializer extends SeleniumSetup {
 
     /**
-     * <p>This method set the values to initiate the driver with the proper values coming from the testng xml </p>
+     * <p>Setting up the driver instance with the values coming from testng xml</p>
      * @param browserName Browser name
      * @param url url to connect
      */
-    @Parameters({"browser_name","url"})
-    @BeforeMethod(alwaysRun = true)
-    public void setUp(String browserName,String url){
+    @Parameters ({"browser", "url"})
+    @BeforeMethod (alwaysRun = true)
+    public void setUp(String browserName, String url){
         super.setUp(browserName);
-        driver.get(url);
+        driverInstance.get(url);
     }
 
     /**
-     * This method overrides the quitBrowser method inherit from SeleniumSetup class
+     * Overriding the SeleniumSetup quitBrowser method
      */
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod (alwaysRun = true)
     public void quitBrowser(){
-        super.tearDown(); }
-
+        super.tearDown();
+    }
 }

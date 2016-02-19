@@ -3,3 +3,7 @@
 *.iws
 target/
 .idea/*
+JavaScript_Project/nightwatch_project/*.log
+JavaScript_Project/nightwatch_project/selenium
+JavaScript_Project/nightwatch_project/node_modules
+JavaScript_Project/nightwatch_project/reports

@@ -19,7 +19,7 @@ public class LoginTest extends SeleniumInitializer{
      * @throws InterruptedException
      */
     @Parameters({"emailLogin", "passwordLogin"})
-    @Test(groups = "login_test")
+    @Test(groups = "login_test_auto")
     public void successfulTest(String userEmail, String userPassword) throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriverInstance());
         Assert.assertTrue(loginPage.isTitleDisplayed(), "Page cannot load");
